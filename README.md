@@ -83,7 +83,7 @@ Hi, I’m Loganathan, a Data Analyst & Power BI Developer passionate about trans
 Thank you for exploring this project — Happy Learning! 🎉📚
 
 📬 Contact  
-For collaboration or questions: your-loganathanvizasia@gmail.com
+For collaboration or questions: loganathanvizasia@gmail.com
 
 
 
