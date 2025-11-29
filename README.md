@@ -1,3 +1,4 @@
+<img width="477" height="280" alt="image" src="https://github.com/user-attachments/assets/2c4e942f-c4d3-4cff-bb10-7dac9aaabf4a" />
 
 🛒 Retail Sales Analysis — SQL Case Study
 
@@ -65,7 +66,6 @@ LIMIT 5;
 
 Badges:
 ![SQL](https://img.shields.io/badge/SQL-Analysis-blue)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Compatible-316192?logo=postgresql&logoColor=white)
 ![MySQL](https://img.shields.io/badge/MySQL-Compatible-4479A1?logo=mysql&logoColor=white)
 ![Data Analysis](https://img.shields.io/badge/Data_Analysis-SQL-green)
 ![License](https://img.shields.io/badge/Status-Active-success)
