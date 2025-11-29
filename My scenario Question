@@ -1,0 +1,133 @@
+These are my scenario question 
+first try to slove it 
+
+🛒 Retail Sales Analysis — FULL SQL Case Study
+------------------------------------------------------------
+
+📌 **All Questions + Queries Included**  
+(With Emojis & Lines)
+
+------------------------------------------------------------
+
+Q1️⃣  Retrieve all columns for sales made on **2022-11-05**
+------------------------------------------------------------
+SELECT *
+FROM retail_sales
+WHERE sale_date = '2022-11-05';
+
+Q2️⃣  Transactions where category = 'Clothing' AND quantity > 4 in **Nov 2022**
+------------------------------------------------------------
+SELECT *
+FROM retail_sales
+WHERE category = 'Clothing'
+  AND DATE_FORMAT(sale_date, '%Y-%m') = '2022-11'
+  AND quantity >= 4;
+
+Q3️⃣  Total sales for each category
+------------------------------------------------------------
+SELECT 
+    category,
+    SUM(total_sale) AS net_sale,
+    COUNT(*) AS total_orders
+FROM retail_sales
+GROUP BY category;
+
+Q4️⃣  Average age of customers who purchased from **Beauty**
+------------------------------------------------------------
+SELECT
+    ROUND(AVG(age), 2) AS avg_age
+FROM retail_sales
+WHERE category = 'Beauty';
+
+Q5️⃣  Transactions with total_sale > 1000
+------------------------------------------------------------
+SELECT *
+FROM retail_sales
+WHERE total_sale > 1000;
+
+Q6️⃣  Total number of transactions by gender & category
+------------------------------------------------------------
+SELECT 
+    category,
+    gender,
+    COUNT(*) AS total_trans
+FROM retail_sales
+GROUP BY category, gender
+ORDER BY category;
+
+Q7️⃣  Best-selling month in each year (highest AVG sale)
+------------------------------------------------------------
+SELECT year, month, avg_sale
+FROM (
+    SELECT
+        YEAR(sale_date) AS year,
+        MONTH(sale_date) AS month,
+        AVG(total_sale) AS avg_sale,
+        RANK() OVER (
+            PARTITION BY YEAR(sale_date)
+            ORDER BY AVG(total_sale) DESC
+        ) AS rnk
+    FROM retail_sales
+    GROUP BY YEAR(sale_date), MONTH(sale_date)
+) AS t1
+WHERE rnk = 1;
+
+Q8️⃣  Top 5 customers by total sales
+------------------------------------------------------------
+SELECT 
+    customer_id,
+    SUM(total_sale) AS total_sales
+FROM retail_sales
+GROUP BY customer_id
+ORDER BY total_sales DESC
+LIMIT 5;
+
+Q9️⃣  Number of unique customers per category
+------------------------------------------------------------
+SELECT  
+    category,
+    COUNT(DISTINCT customer_id) AS cnt_unique_cs
+FROM retail_sales
+GROUP BY category;
+
+🔟  Total revenue generated each year
+------------------------------------------------------------
+SELECT 
+    YEAR(sale_date) AS year,
+    SUM(total_sale) AS total_revenue
+FROM retail_sales
+GROUP BY YEAR(sale_date)
+ORDER BY year;
+
+Q1️⃣1️⃣  Most popular category (highest quantity sold)
+------------------------------------------------------------
+SELECT 
+    category,
+    SUM(quantity) AS total_quantity_sold
+FROM retail_sales
+GROUP BY category
+ORDER BY total_quantity_sold DESC
+LIMIT 1;
+
+Q1️⃣2️⃣  Highest-selling day for each category
+------------------------------------------------------------
+SELECT 
+    category,
+    sale_date,
+    MAX(total_sale) AS max_sale
+FROM retail_sales
+GROUP BY category, sale_date
+ORDER BY category, max_sale DESC;
+
+Q1️⃣3️⃣  Peak sales hour (highest transactions)
+------------------------------------------------------------
+SELECT 
+    HOUR(sale_time) AS sale_hour,
+    COUNT(*) AS total_transactions
+FROM retail_sales
+GROUP BY HOUR(sale_time)
+ORDER BY total_transactions DESC;
+
+------------------------------------------------------------
+📬 Contact  
+loganathanvizasai@gmail.com
